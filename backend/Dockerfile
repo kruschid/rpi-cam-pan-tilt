@@ -7,6 +7,8 @@ COPY  app.py \
       requirements.txt \
       .
 
+COPY templates templates/
+
 RUN apt-get update && apt-get install make gcc ffmpeg libsm6 libxext6 -y
 RUN pip install -r requirements.txt
 
