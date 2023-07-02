@@ -9,3 +9,4 @@ services:
     ports:
       - 5000:5000
     privileged: true
+    stop_signal: SIGINT

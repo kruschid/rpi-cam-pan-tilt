@@ -140,13 +140,3 @@ def pos(pan, tilt):
   pwm.pan(pan)
   pwm.tilt(tilt)
   return ("", 204)
-
-
-def signal_handler(sig, frame):
-    print('You pressed Ctrl+C!')
-    pwm.exit_PCA9685()
-    sys.exit(0)
-
-signal.signal(signal.SIGINT, signal_handler)
-print('Press Ctrl+C')
-signal.pause()
