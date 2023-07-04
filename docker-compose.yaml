@@ -10,3 +10,7 @@ services:
       - 5000:5000
     privileged: true
     stop_signal: SIGINT
+    restart: unless-stopped
+    # environment:
+    #   - OPENCV_LOG_LEVEL=DEBUG
+    #   - OPENCV_VIDEOIO_DEBUG=1
