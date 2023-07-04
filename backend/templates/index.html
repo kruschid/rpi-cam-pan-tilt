@@ -20,7 +20,7 @@
     let tilt = 1.0;
 
     const update = () =>
-      fetch(`${location.host}/pos/${pan.toFixed(1)/tilt.toFixed(1)}`);
+      fetch(`${location.origin}/pos/${pan.toFixed(1)/tilt.toFixed(1)}`);
 
     update(); // inital position
 
