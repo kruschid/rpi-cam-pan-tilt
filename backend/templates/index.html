@@ -1,9 +1,47 @@
 <html>
   <head>
-    <title>Video Streaming </title>
+    <title>Mochi OnlyFans</title>
   </head>
   <body>
-    <h1>Live Video Streaming </h1>
-    <img src="{{ url_for('video_feed') }}">
+    <h1>Mochi OnlyFans</h1>
+    <div style="display: relative">
+      <img
+        style="width: 100%"
+        src="{{ url_for('video_feed') }}"
+      />
+      <button id="left" style="position: absolute; left: 30; top: 50%; opacity: 0.75;">&larr;</button>
+      <button id="right" style="position: absolute; right: 30; top: 50%; opacity: 0.75;">&rarr;</button>
+      <button id="up" style="position: absolute; left: 50%; top: 30; opacity: 0.75;">&uarr;</button>
+      <button id="down" style="position: absolute; left: 50%; bottom: 30; opacity: 0.75;">&darr;</button>
+    </div>
   </body>
+  <script>
+    let pan = 0.5;
+    let tilt = 1.0;
+
+    update(); // inital position
+
+    document.getElementById("left").onclick(() => {
+      pan = Math.max(0, pan-0.1);
+      update();
+    });
+
+    document.getElementById("right").onclick(() => {
+      pan = Math.min(1, pan+0.1);
+      update();
+    });
+
+    document.getElementById("up").onclick(() => {
+      tilt = Math.min(1, tilt+0.1);
+      update();
+    });
+
+    document.getElementById("down").onclick(() => {
+      tilt = Math.max(1, tilt-0.1);
+      update();
+    });
+
+    const update = () =>
+      fetch(`${location.host}/pos/${pan.toFixed(1)/tilt.toFixed(1)}`);
+  </script>
 </html>
