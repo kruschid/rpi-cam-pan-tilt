@@ -4,7 +4,7 @@
   </head>
   <body>
     <h1>Mochi OnlyFans</h1>
-    <div style="display: relative">
+    <div style="position: relative">
       <img
         style="width: 100%"
         src="{{ url_for('video_feed') }}"
@@ -19,29 +19,29 @@
     let pan = 0.5;
     let tilt = 1.0;
 
-    update(); // inital position
-
-    document.getElementById("left").onclick(() => {
-      pan = Math.max(0, pan-0.1);
-      update();
-    });
-
-    document.getElementById("right").onclick(() => {
-      pan = Math.min(1, pan+0.1);
-      update();
-    });
-
-    document.getElementById("up").onclick(() => {
-      tilt = Math.min(1, tilt+0.1);
-      update();
-    });
-
-    document.getElementById("down").onclick(() => {
-      tilt = Math.max(1, tilt-0.1);
-      update();
-    });
-
     const update = () =>
       fetch(`${location.host}/pos/${pan.toFixed(1)/tilt.toFixed(1)}`);
+
+    update(); // inital position
+
+    document.getElementById("left").onclick = () => {
+      pan = Math.max(0, pan-0.1);
+      update();
+    };
+
+    document.getElementById("right").onclick = () => {
+      pan = Math.min(1, pan+0.1);
+      update();
+    };
+
+    document.getElementById("up").onclick = () => {
+      tilt = Math.min(1, tilt+0.1);
+      update();
+    };
+
+    document.getElementById("down").onclick = () => {
+      tilt = Math.max(1, tilt-0.1);
+      update();
+    };
   </script>
 </html>
