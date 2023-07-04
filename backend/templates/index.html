@@ -25,22 +25,22 @@
     update(); // inital position
 
     document.getElementById("left").onclick = () => {
-      pan = Math.max(0, pan-0.1);
-      update();
-    };
-
-    document.getElementById("right").onclick = () => {
       pan = Math.min(1, pan+0.1);
       update();
     };
 
-    document.getElementById("up").onclick = () => {
-      tilt = Math.min(1, tilt+0.1);
+    document.getElementById("right").onclick = () => {
+      pan = Math.max(0, pan-0.1);
       update();
     };
 
+    document.getElementById("up").onclick = () => {
+      tilt = Math.max(0, tilt-0.1);
+      update();
+    };
+    
     document.getElementById("down").onclick = () => {
-      tilt = Math.max(1, tilt-0.1);
+      tilt = Math.min(1, tilt+0.1);
       update();
     };
   </script>
