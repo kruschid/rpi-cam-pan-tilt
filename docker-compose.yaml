@@ -14,3 +14,11 @@ services:
     # environment:
     #   - OPENCV_LOG_LEVEL=DEBUG
     #   - OPENCV_VIDEOIO_DEBUG=1
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: rpicpt-tunnel
+    restart: unless-stopped
+    command: tunnel run
+    network_mode: service:backend
+    environment:
+      - TUNNEL_TOKEN
